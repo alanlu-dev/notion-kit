@@ -1,5 +1,11 @@
 # @alanlu-dev/notion-api-zod-schema
 
+## 1.0.0
+
+### Major Changes
+
+- [`d2171f6`](https://github.com/alanlu-dev/notion-kit/commit/d2171f6c4f23207a2c66c26d6b06e0eaf5204ab3) Thanks [@alanlu-zyl](https://github.com/alanlu-zyl)! - chore(notion-api-zod-schema): migrate from @alanlu-dev/web-kit
+
 ## 0.0.6
 
 ### Patch Changes
