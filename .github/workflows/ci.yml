@@ -1,0 +1,124 @@
+name: CI
+
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+      - '*.md'
+    branches:
+      - main
+      - release/*
+      - feat/*
+      - fix/*
+      - perf/*
+  pull_request:
+  workflow_dispatch:
+
+env:
+  # 7 GiB by default on GitHub, setting to 6 GiB
+  # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+  NODE_OPTIONS: --max-old-space-size=6144
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    timeout-minutes: 10
+    name: 'Lint'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: TypeCheck
+        run: pnpm run typecheck
+
+      - name: CSpell
+        uses: streetsidesoftware/cspell-action@v6
+
+      # From https://github.com/rhysd/actionlint/blob/main/docs/usage.md#use-actionlint-on-github-actions
+      - name: Check workflow files
+        run: |
+          bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          ./actionlint -color -shellcheck=""
+
+  test:
+    timeout-minutes: 20
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node_version: [18, 20]
+        include:
+          # Active LTS + other OS
+          - os: macos-latest
+            node_version: 20
+          - os: windows-latest
+            node_version: 20
+      fail-fast: false
+
+    name: 'Build & Test: node-${{ matrix.node_version }}, ${{ matrix.os }}'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Assume PRs are less than 50 commits
+          fetch-depth: 50
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@20576b4b9ed46d41e2d45a2256e5e2316dde6834 # v43.0.1
+        with:
+          files: |
+            docs/**
+            .github/**
+            !.github/workflows/ci.yml
+            **.md
+
+      - name: Install pnpm
+        if: steps.changed-files.outputs.only_changed != 'true'
+        uses: pnpm/action-setup@v3
+
+      - name: Set node version to ${{ matrix.node_version }}
+        if: steps.changed-files.outputs.only_changed != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: 'pnpm'
+
+      - name: Install deps
+        if: steps.changed-files.outputs.only_changed != 'true'
+        run: pnpm install
+
+      - name: Build
+        if: steps.changed-files.outputs.only_changed != 'true'
+        run: pnpm run build
+
+      - name: Test unit
+        if: steps.changed-files.outputs.only_changed != 'true'
+        run: pnpm run test
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          NOTION_DASHBOARD_ID: ${{ secrets.NOTION_DASHBOARD_ID }}
