@@ -3,6 +3,16 @@
   "type": "module",
   "version": "0.0.6",
   "description": "Zod schemas for the Notion API (unofficial)",
+  "author": "Alan Lu <hi@alanlu.dev> (https://github.com/alanlu-zyl)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alanlu-dev/notion-kit.git",
+    "directory": "packages/notion-api-zod-schema"
+  },
+  "bugs": {
+    "url": "https://github.com/alanlu-dev/notion-kit/issues"
+  },
   "keywords": [
     "notion",
     "notion-api",
@@ -35,7 +45,7 @@
     "lint:eslint": "eslint --fix .",
     "lint:prettier": "prettier --ignore-path ../../.prettierignore --write .",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
-    "pkg:test": "vitest run"
+    "test": "vitest run"
   },
   "peerDependencies": {
     "zod": "3.23.4"
