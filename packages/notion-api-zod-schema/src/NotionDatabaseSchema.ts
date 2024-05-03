@@ -166,10 +166,21 @@ export type NotionButtonType = z.infer<typeof NotionButtonSchema>
 // formula
 export const NotionFormulaSchema = z.object({
   type: z.literal('formula'),
-  formula: z.object({
-    type: z.literal('string'),
-    string: z.string().nullable(),
-  }),
+  formula: z.discriminatedUnion('type', [
+    z.object({
+      type: z.literal('string'),
+      string: z.string().nullable(),
+    }),
+    z.object({
+      type: z.literal('number'),
+      number: z.number().nullable(),
+    }),
+    z.object({
+      type: z.literal('boolean'),
+      boolean: z.boolean().nullable(),
+    }),
+    NotionDateSchema,
+  ]),
 })
 export type NotionFormulaType = z.infer<typeof NotionFormulaSchema>
 
