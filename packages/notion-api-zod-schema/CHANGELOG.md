@@ -1,5 +1,13 @@
 # @alanlu-dev/notion-api-zod-schema
 
+## 1.0.1
+
+### Patch Changes
+
+- [`2d9da9c`](https://github.com/alanlu-dev/notion-kit/commit/2d9da9c1508baa5693d6afde2d3e800b9cffc999) Thanks [@alanlu-zyl](https://github.com/alanlu-zyl)! - fix(notion-api-zod-schema): formula schema
+
+- [`e1683dc`](https://github.com/alanlu-dev/notion-kit/commit/e1683dc9fface016f0c77d5f3cec3c9ae59b984a) Thanks [@alanlu-zyl](https://github.com/alanlu-zyl)! - chore(deps): bump package versions
+
 ## 1.0.0
 
 ### Major Changes
