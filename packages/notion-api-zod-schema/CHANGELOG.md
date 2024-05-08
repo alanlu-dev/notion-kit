@@ -1,5 +1,11 @@
 # @alanlu-dev/notion-api-zod-schema
 
+## 1.0.2
+
+### Patch Changes
+
+- [`0f5ac19`](https://github.com/alanlu-dev/notion-kit/commit/0f5ac196bc0942a5c462972bf3b8b018a2fda9c2) Thanks [@alanlu-zyl](https://github.com/alanlu-zyl)! - chore(deps): bump package versions
+
 ## 1.0.1
 
 ### Patch Changes
