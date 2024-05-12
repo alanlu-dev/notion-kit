@@ -1,5 +1,11 @@
 # @alanlu-dev/notion-api-zod-schema
 
+## 1.0.3
+
+### Patch Changes
+
+- [`63dff6e`](https://github.com/alanlu-dev/notion-kit/commit/63dff6ec1236f23c464bb152a14a4d13dccaa150) Thanks [@alanlu-zyl](https://github.com/alanlu-zyl)! - fix(notion-api-zod-schema): rollupSchema allow type number
+
 ## 1.0.2
 
 ### Patch Changes
