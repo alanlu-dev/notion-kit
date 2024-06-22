@@ -9,31 +9,33 @@
       "dependsOn": ["^pkg:prepare"],
       "cache": false
     },
-    "dev": {
-      "cache": false,
-      "persistent": true
-    },
     "cleanup": {
       "cache": false
     },
     "build:clean": {
       "cache": false
     },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "inputs": ["$TURBO_DEFAULT$", ".env.development.local", ".env.local", ".env.development", ".env"]
+    },
     "build": {
       "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env.production.local", ".env.local", ".env.production", ".env"],
       "outputs": ["dist/**", ".output/**"]
     },
-    "deploy": {
-      "dependsOn": ["build", "test", "lint"]
-    },
     "test": {
-      "inputs": [".env"]
+      "inputs": ["$TURBO_DEFAULT$", ".env.development.local", ".env.local", ".env.development", ".env"]
     },
     "lint": {},
     "lint:eslint": {},
     "typecheck": {},
     "coverage": {
       "outputs": ["coverage/**"]
+    },
+    "deploy": {
+      "dependsOn": ["build", "test", "lint"]
     }
   }
 }

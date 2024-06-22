@@ -1,8 +1,4 @@
-import * as dotenv from 'dotenv'
 import { getNotionPage } from './getNotionPage'
-
-// 全局加載環境變量
-dotenv.config()
 
 // 確保在所有測試之前環境變量已正確設置
 beforeAll(() => {

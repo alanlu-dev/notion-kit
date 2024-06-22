@@ -111,6 +111,17 @@ jobs:
         if: steps.changed-files.outputs.only_changed != 'true'
         run: pnpm install
 
+      - name: Create .env files
+        run: |
+          PACKAGES=(packages/notion-api-zod-schema)
+          for PACKAGE in "${PACKAGES[@]}"; do
+            mkdir -p $PACKAGE
+            echo "NOTION_API_KEY=${{ secrets.NOTION_API_KEY }}" >> $PACKAGE/.env
+            echo "NOTION_PAGE_ID=${{ secrets.NOTION_PAGE_ID }}" >> $PACKAGE/.env
+            echo "NOTION_DATABASE_ID=${{ secrets.NOTION_DATABASE_ID }}" >> $PACKAGE/.env
+            echo "NOTION_DASHBOARD_ID=${{ secrets.NOTION_DASHBOARD_ID }}" >> $PACKAGE/.env
+          done
+
       - name: Build
         if: steps.changed-files.outputs.only_changed != 'true'
         run: pnpm run build
@@ -118,8 +129,8 @@ jobs:
       - name: Test unit
         if: steps.changed-files.outputs.only_changed != 'true'
         run: pnpm run test
-        env:
-          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-          NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-          NOTION_DASHBOARD_ID: ${{ secrets.NOTION_DASHBOARD_ID }}
+        # env:
+        #   NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+        #   NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
+        #   NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+        #   NOTION_DASHBOARD_ID: ${{ secrets.NOTION_DASHBOARD_ID }}
