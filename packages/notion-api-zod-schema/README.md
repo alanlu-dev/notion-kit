@@ -23,4 +23,4 @@ This project is a fork of [vogelino/notion-api-zod-schema](https://github.com/vo
 
 ## notion
 
-* [demo template](https://www.notion.so/notion-api-zod-schema-4b8d507e007b42fd92103ac281db3f7d)
+* [demo template](https://www.notion.so/notion-api-zod-schema-59184019bbba4e948673c4a36f586b08)
