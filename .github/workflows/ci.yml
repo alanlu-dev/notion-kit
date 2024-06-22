@@ -117,9 +117,9 @@ jobs:
 
       - name: Test unit
         if: steps.changed-files.outputs.only_changed != 'true'
-        env:
-          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-          NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-          NOTION_DASHBOARD_ID: ${{ secrets.NOTION_DASHBOARD_ID }}
-        run: pnpm run test
+        run: |
+          echo "NOTION_API_KEY=${{ secrets.NOTION_API_KEY }}" >> .env
+          echo "NOTION_PAGE_ID=${{ secrets.NOTION_PAGE_ID }}" >> .env
+          echo "NOTION_DATABASE_ID=${{ secrets.NOTION_DATABASE_ID }}" >> .env
+          echo "NOTION_DASHBOARD_ID=${{ secrets.NOTION_DASHBOARD_ID }}" >> .env
+          pnpm run test
