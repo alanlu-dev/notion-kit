@@ -48,15 +48,15 @@
     "test": "vitest run"
   },
   "peerDependencies": {
-    "zod": "^3.23.7"
+    "zod": "^3.23.8"
   },
   "dependencies": {
-    "zod": "^3.23.7"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@alanlu-dev/tsconfig": "^1.0.4",
+    "@alanlu-dev/tsconfig": "^1.0.6",
     "@notionhq/client": "^2.2.15",
     "dotenv": "^16.4.5",
-    "tsx": "^4.9.3"
+    "tsx": "^4.15.7"
   }
 }
