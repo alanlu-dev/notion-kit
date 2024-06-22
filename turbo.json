@@ -1,5 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [".env"],
   "tasks": {
     "app:prepare": {
       "cache": false
@@ -25,7 +26,9 @@
     "deploy": {
       "dependsOn": ["build", "test", "lint"]
     },
-    "test": {},
+    "test": {
+      "inputs": [".env"]
+    },
     "lint": {},
     "lint:eslint": {},
     "typecheck": {},
