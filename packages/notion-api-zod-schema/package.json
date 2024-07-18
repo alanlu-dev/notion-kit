@@ -54,9 +54,9 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@alanlu-dev/tsconfig": "^1.0.6",
+    "@alanlu-dev/tsconfig": "^1.0.7",
     "@notionhq/client": "^2.2.15",
     "dotenv": "^16.4.5",
-    "tsx": "^4.15.7"
+    "tsx": "^4.16.2"
   }
 }
