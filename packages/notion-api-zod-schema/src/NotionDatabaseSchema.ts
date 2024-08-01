@@ -256,7 +256,7 @@ export const NotionDatabaseRollupSchema = NotionDatabaseCellSchema.extend({
     }),
     z.object({
       type: z.literal('number'),
-      number: z.number(),
+      number: z.number().nullable(),
       function: rollupFunctionEnum,
     }),
   ]),
