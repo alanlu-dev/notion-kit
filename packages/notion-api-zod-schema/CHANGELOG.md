@@ -1,5 +1,13 @@
 # @alanlu-dev/notion-api-zod-schema
 
+## 1.0.6
+
+### Patch Changes
+
+- [`2dad920`](https://github.com/alanlu-dev/notion-kit/commit/2dad920ff1bf3d9d6c1e3538798722ac047018b9) Thanks [@alanlu-zyl](https://github.com/alanlu-zyl)! - chore(deps): bump package versions
+
+- [`47be2b0`](https://github.com/alanlu-dev/notion-kit/commit/47be2b0fbca54cdc9c05b610122c236ff32ffdb7) Thanks [@alanlu-zyl](https://github.com/alanlu-zyl)! - fix(notion-api-zod-schema): update NotionDatabaseSchema to allow nullable number in rollup function
+
 ## 1.0.5
 
 ### Patch Changes
