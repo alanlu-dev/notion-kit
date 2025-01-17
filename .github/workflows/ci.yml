@@ -50,6 +50,9 @@ jobs:
       - name: Lint
         run: pnpm run lint
 
+      - name: Format
+        run: pnpm run format
+
       - name: TypeCheck
         run: pnpm run typecheck
 
@@ -68,14 +71,14 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node_version: [20]
+        node_version: [20, 22]
         # node_version: [18, 20]
         # include:
-          # # Active LTS + other OS
-          # - os: macos-latest
-          #   node_version: 20
-          # - os: windows-latest
-          #   node_version: 20
+        #   # Active LTS + other OS
+        #   - os: macos-latest
+        #     node_version: 20
+        #   - os: windows-latest
+        #     node_version: 20
       fail-fast: false
 
     name: 'Build & Test: node-${{ matrix.node_version }}, ${{ matrix.os }}'
@@ -111,17 +114,6 @@ jobs:
         if: steps.changed-files.outputs.only_changed != 'true'
         run: pnpm install
 
-      - name: Create .env files
-        run: |
-          PACKAGES=(packages/notion-api-zod-schema)
-          for PACKAGE in "${PACKAGES[@]}"; do
-            mkdir -p $PACKAGE
-            echo "NOTION_API_KEY=${{ secrets.NOTION_API_KEY }}" >> $PACKAGE/.env
-            echo "NOTION_PAGE_ID=${{ secrets.NOTION_PAGE_ID }}" >> $PACKAGE/.env
-            echo "NOTION_DATABASE_ID=${{ secrets.NOTION_DATABASE_ID }}" >> $PACKAGE/.env
-            echo "NOTION_DASHBOARD_ID=${{ secrets.NOTION_DASHBOARD_ID }}" >> $PACKAGE/.env
-          done
-
       - name: Build
         if: steps.changed-files.outputs.only_changed != 'true'
         run: pnpm run build
@@ -129,8 +121,3 @@ jobs:
       - name: Test unit
         if: steps.changed-files.outputs.only_changed != 'true'
         run: pnpm run test
-        # env:
-        #   NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-        #   NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
-        #   NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-        #   NOTION_DASHBOARD_ID: ${{ secrets.NOTION_DASHBOARD_ID }}

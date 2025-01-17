@@ -16,9 +16,8 @@
     "coverage",
     "pnpm-lock.yaml",
     "nginx.conf",
-    "NotionTimezoneSchema.ts",
-    "*/notion-api-zod-schema/data/**",
-    ".env.example"
+    ".env.example",
+    "tests-examples"
   ],
   "dictionaryDefinitions": [
     {

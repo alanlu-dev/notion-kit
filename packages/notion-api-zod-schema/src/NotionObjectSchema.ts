@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { NotionUserSchema } from './NotionUserSchema'
 import { NotionParentSchema } from './NotionParentSchema'
+import { NotionUserSchema } from './NotionUserSchema'
 
 export const NotionObjectSchema = z.object({
   id: z.string(),

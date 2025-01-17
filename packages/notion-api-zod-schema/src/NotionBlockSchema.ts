@@ -1,8 +1,8 @@
 import { z } from 'zod'
+import { NotionColorSchema } from './NotionColorSchema'
+import { NotionExternalFileObjectSchema, NotionFileSchema, NotionInternalFileObjectSchema } from './NotionFileSchema'
 import { NotionObjectSchema } from './NotionObjectSchema'
 import { NotionEmojiSchema, NotionTextSchema } from './NotionTextSchema'
-import { NotionExternalFileObjectSchema, NotionFileSchema, NotionInternalFileObjectSchema } from './NotionFileSchema'
-import { NotionColorSchema } from './NotionColorSchema'
 
 const NotionBlockBaseSchema = NotionObjectSchema.extend({
   type: z.string(),

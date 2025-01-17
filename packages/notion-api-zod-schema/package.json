@@ -39,24 +39,24 @@
   ],
   "scripts": {
     "pkg:prepare": "pnpm run build",
-    "build:clean": "npx rimraf --glob ./dist",
+    "clean:build": "npx rimraf --glob ./dist",
     "build": "unbuild --minify",
     "dev": "unbuild --stub",
-    "lint:eslint": "eslint --fix .",
-    "lint:prettier": "prettier --ignore-path ../../.prettierignore --write .",
-    "lint": "pnpm lint:eslint && pnpm lint:prettier",
+    "format": "prettier --check . --ignore-path ../../.prettierignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
   "peerDependencies": {
-    "zod": "^3.23.8"
+    "zod": "^3.24.1"
   },
   "dependencies": {
-    "zod": "^3.23.8"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@alanlu-dev/tsconfig": "^1.0.7",
+    "@alanlu-dev/tsconfig": "^1.0.14",
     "@notionhq/client": "^2.2.15",
-    "dotenv": "^16.4.5",
-    "tsx": "^4.16.5"
+    "dotenv": "^16.4.7",
+    "tsx": "^4.19.2"
   }
 }

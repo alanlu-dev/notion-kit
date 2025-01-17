@@ -1,9 +1,9 @@
-import { z } from 'zod'
 import type { NotionBlockType } from './NotionBlockSchema'
-import { NotionEmojiSchema } from './NotionTextSchema'
-import { NotionObjectSchema } from './NotionObjectSchema'
-import { NotionExternalFileObjectSchema, NotionFileSchema, NotionInternalFileObjectSchema } from './NotionFileSchema'
+import { z } from 'zod'
 import { NotionDatabaseCellSchema, NotionDatabasePropertySchema, NotionTitleSchema } from './NotionDatabaseSchema'
+import { NotionExternalFileObjectSchema, NotionFileSchema, NotionInternalFileObjectSchema } from './NotionFileSchema'
+import { NotionObjectSchema } from './NotionObjectSchema'
+import { NotionEmojiSchema } from './NotionTextSchema'
 
 export const NotionPageSchema = NotionObjectSchema.extend({
   object: z.literal('page'),

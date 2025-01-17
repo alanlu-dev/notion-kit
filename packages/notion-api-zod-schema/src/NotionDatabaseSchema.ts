@@ -1,10 +1,10 @@
 import { z } from 'zod'
-import { NotionEmojiSchema, NotionTextSchema } from './NotionTextSchema'
 import { NotionColorSchema } from './NotionColorSchema'
-import { NotionObjectSchema } from './NotionObjectSchema'
 import { NotionExternalFileObjectSchema, NotionFileSchema, NotionInternalFileObjectSchema } from './NotionFileSchema'
-import { NotionUserSchema } from './NotionUserSchema'
+import { NotionObjectSchema } from './NotionObjectSchema'
+import { NotionEmojiSchema, NotionTextSchema } from './NotionTextSchema'
 import { NotionTimezoneSchema } from './NotionTimezoneSchema'
+import { NotionUserSchema } from './NotionUserSchema'
 
 export const NotionDatabaseCellSchema = z.object({
   id: z.string(),
