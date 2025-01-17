@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.6",
   "description": "Zod schemas for the Notion API (unofficial)",
-  "author": "Alan Lu <hi@alanlu.dev> (https://github.com/alanlu-zyl)",
+  "author": "Alan Lu <hi@alanlu.dev> (https://github.com/alanlu-tw)",
   "license": "MIT",
   "repository": {
     "type": "git",
