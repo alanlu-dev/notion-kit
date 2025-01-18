@@ -1,5 +1,15 @@
 # @alanlu-dev/notion-api-zod-schema
 
+## 1.0.7
+
+### Patch Changes
+
+- [`92361e6`](https://github.com/alanlu-dev/notion-kit/commit/92361e61b5bf4ef08b66199465508c7a8d760a61) Thanks [@alanlu-tw](https://github.com/alanlu-tw)! - chore(deps): bump package versions
+
+- [`fe264ab`](https://github.com/alanlu-dev/notion-kit/commit/fe264abc5305805ecf18ac0c988625f832b1990b) Thanks [@alanlu-tw](https://github.com/alanlu-tw)! - chore: update the author's GitHub link
+
+- [`b4a4e58`](https://github.com/alanlu-dev/notion-kit/commit/b4a4e589106ad4e4aa9e43d4d972a245fd9cec9a) Thanks [@alanlu-tw](https://github.com/alanlu-tw)! - chore: update author's email address
+
 ## 1.0.6
 
 ### Patch Changes
